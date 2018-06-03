@@ -1,5 +1,5 @@
 # nexus-oss-npm-proxy
-Nexus Registry can be used to setup proxy to the npm registry. 
+Nexus Registry can be used to setup as proxy to the npm registry and reduce more downloads
 
 ## Start Server
 ### Using Openshift
