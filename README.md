@@ -22,6 +22,8 @@ curl http://localhost:8081/nexus/service/local/status
 After the health endpoint is active, try accessing the UI 
 http://localhost:8081/nexus
 
+Login using the default credentials `admin/admin123`
+
 Create a new Repository -> Proxy Repository -> npm -> Fill the form
 input registry for npm https://registry.npmjs.org
 
