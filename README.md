@@ -51,6 +51,7 @@ npm --loglevel info install grunt
 
 check this curl http://localhost:8081/nexus/content/repositories/badam/ to find out cached repositories
 
+
 ##### References 
 * https://help.sonatype.com/repomanager3/node-packaged-modules-and-npm-registries
 * https://help.sonatype.com/repomanager3/quick-start-guide---proxying-maven-and-npm
