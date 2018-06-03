@@ -5,15 +5,19 @@
 oc new-app sonatype/nexus:oss
 
 ### Using single Docker container 
+```
 docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss
-
-### Using Two Docker containers for persistent storage 
-docker run -d --name nexus-data sonatype/nexus:oss echo "data-only container for Nexus”
+```
+### Using Two Docker containers for persistent storage
+```
+docker run -d --name nexus-data sonatype/nexus:oss echo "data-only container for Nexus"
 docker run -d -p 8081:8081 --name nexus --volumes-from nexus-data sonatype/nexus:oss
+```
 
 wait for atleast 10mins for the registry to initialize and hit this endpoint 
+```
 curl http://localhost:8081/nexus/service/local/status
-
+```
 ### Server Setup
 After the health endpoint is active, try accessing the UI 
 http://localhost:8081/nexus
