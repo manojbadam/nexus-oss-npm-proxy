@@ -8,6 +8,8 @@ oc new-app sonatype/nexus:oss
 ### Using single Docker container 
 ```
 docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss
+(or)
+docker run -d -p 8081:8081 --name nexus -v /some/dir/nexus-data:/sonatype-work sonatype/nexus
 ```
 ### Using Two Docker containers for persistent storage
 ```
