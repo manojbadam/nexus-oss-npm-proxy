@@ -25,12 +25,13 @@ http://localhost:8081/nexus
 
 Login using the default credentials `admin/admin123`
 
+### NPM Server Setup
 Create a new Repository -> Proxy Repository -> npm -> Fill the form
 input registry for npm https://registry.npmjs.org
 
 Get the Repository path from UI (similar to http://localhost:8081/nexus/content/repositories/npm-all)
 
-### Validate
+#### Validate
 
 Goto any node project directory 
 ##### create .npmrc file with following contents
@@ -52,6 +53,54 @@ npm --loglevel info install grunt
 
 check this curl http://localhost:8081/nexus/content/repositories/badam/ to find out cached repositories
 
+### Maven Server Setup
+Create a new Repository -> Proxy Repository -> maven -> Fill the form
+input registry for maven http://repo.maven.apache.org/maven2/
+
+Get the Repository path from UI (similar to http://localhost:8081/nexus/content/repositories/mvn-all/)
+
+#### Validate 
+
+update mvn settings.xml (~/.m2/settings.xml)
+```
+<settings>
+  <mirrors>
+	<mirror>
+  	<!--This sends everything else to /public -->
+  	<id>nexus</id>
+  	<mirrorOf>*</mirrorOf>
+  	<url>http://localhost:8081/nexus/content/repositories/mvn-all/</url>
+	</mirror>
+  </mirrors>
+  <profiles>
+	<profile>
+  	<id>nexus</id>
+  	<!--Enable snapshots for the built in central repo to direct -->
+  	<!--all requests to nexus via the mirror -->
+  	<repositories>
+    	<repository>
+      	<id>central</id>
+      	<url>http://central</url>
+      	<releases><enabled>true</enabled></releases>
+      	<snapshots><enabled>true</enabled></snapshots>
+    	</repository>
+  	</repositories>
+ 	<pluginRepositories>
+    	<pluginRepository>
+      	<id>central</id>
+      	<url>http://central</url>
+      	<releases><enabled>true</enabled></releases>
+      	<snapshots><enabled>true</enabled></snapshots>
+    	</pluginRepository>
+  	</pluginRepositories>
+	</profile>
+  </profiles>
+  <activeProfiles>
+	<!--make the profile active all the time -->
+	<activeProfile>nexus</activeProfile>
+  </activeProfiles>
+</settings>
+```
 
 ##### References 
 * https://help.sonatype.com/repomanager3/node-packaged-modules-and-npm-registries
