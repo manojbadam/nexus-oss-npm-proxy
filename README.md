@@ -106,3 +106,4 @@ update mvn settings.xml (~/.m2/settings.xml)
 * https://help.sonatype.com/repomanager3/node-packaged-modules-and-npm-registries
 * https://help.sonatype.com/repomanager3/quick-start-guide---proxying-maven-and-npm
 * https://www.youtube.com/watch?v=6Y5sRcY92d0 
+* https://maven.apache.org/guides/mini/guide-mirror-settings.html
